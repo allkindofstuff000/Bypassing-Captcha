@@ -142,6 +142,24 @@ time.sleep(2)
 
 
 
+# Now redirect to the login page
+driver.get('https://megapersonals.eu/users/auth/login')
+
+# Read email and password from the file
+email_pass_file = r"C:\Users\SeanAlgo\OneDrive\Documents\Dev\Email.txt"
+
+with open(email_pass_file, 'r') as file:
+    email_pass = file.read().strip()  # Read the email:pass line
+    email, password = email_pass.split(':')  # Split email and password
+
+# Find the email and password input fields and enter the credentials
+email_input = driver.find_element(By.ID, 'person_username_field_login')
+password_input = driver.find_element(By.ID, 'person_password_field_login')
+
+email_input.send_keys(email)  # Enter email
+password_input.send_keys(password)  # Enter password
+
+
 
 
 
